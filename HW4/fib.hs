@@ -26,3 +26,15 @@ fib' n
 -- Are you satisfied with the running time?
 -- No, I think it can improve by using memoization (Dynamic programming)
 -- This will decrease fib to O(n) when n is the input number
+
+fib'' n = fib_aux 0 0 1
+  where
+    fib_aux i res res'
+      | i == n    = res
+      | otherwise =
+          fib_aux (i+1) res' (res+res')
+
+fib_aux i res res'
+      | i == 4    = res
+      | otherwise =
+          fib_aux (i+1) res' (res+res')
