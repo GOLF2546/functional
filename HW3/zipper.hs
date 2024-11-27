@@ -9,7 +9,7 @@ zipper(x:xs,y:ys) = (x,y):zipper(xs,ys)
 zipper':: [a] -> [b] -> [(a,b)] 
 zipper' [] _ = []
 zipper' _ [] = []
-zipper' (x:xs) (y:ys) = (x,y):zipper(xs,ys)
+zipper' (x:xs) (y:ys) = (x,y): zipper' xs ys
 
 -- what's the type of zipper'?
 -- zipper' :: [a] -> [b] -> [(a,b)]
