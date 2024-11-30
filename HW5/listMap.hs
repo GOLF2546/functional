@@ -16,7 +16,7 @@ join (x:xs, ys) = x : join (xs, ys)
 
 rev :: ([a]) -> [a]
 rev ([]) = [] 
-rev (x:xs) = join(rev(xs),[x]) 
+rev (x:xs) = join(rev(xs),[x])  
 
 -- Tail recursive version
 list_Map :: (a -> b) -> [a] -> [b]
