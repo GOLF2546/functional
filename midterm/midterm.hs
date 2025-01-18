@@ -88,4 +88,38 @@ testlist5 =
      [125, 130, 135, 140, 145, 150],
      [155, 160, 165, 170, 175, 180]] --1305
 
--- End Question2
+-- End Question 2
+
+-- Question 3
+sum1_to_n :: Int -> Int
+sum1_to_n n = sum_aux n 0
+    where
+        sum_aux 0 acc = acc
+        sum_aux m acc = sum_aux (m-1) (acc + m)
+
+sumdigit :: [String] -> Int
+sumdigit list1 = sum_aux list1 0
+    where
+        sum_aux [] acc = acc
+        sum_aux (x:xs) acc = sum_aux (xs) ((read x::Int)+acc)
+
+digit_to_sum :: Int -> Int
+digit_to_sum n = sumdigit (map (:[]) (show (sum1_to_n n)))
+
+-- End Question 3
+-- Question 4
+prime :: [Int]
+prime = [2,3,5,7,11,13,17,19]
+
+arePrime :: Int -> [Int] -> Bool
+arePrime n primes = arePrime_aux n primes True
+    where 
+        arePrime_aux _ [] acc = acc
+        arePrime_aux m (x:xs) acc = if(m `mod` x == 0 && m /= x || m == 1) then False && acc else arePrime_aux m xs True 
+
+allPrime :: Int -> Int -> [Int]
+allPrime n m = reverse $ allPrime_aux n m []
+    where
+        allPrime_aux 0 0 [] = []
+        allPrime_aux init' end acc = if init' <= end then (if (arePrime init' prime) then allPrime_aux (init' + 1) end (init':acc) else allPrime_aux (init'+ 1) end acc) else acc
+-- End Question 4
