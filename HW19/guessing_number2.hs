@@ -1,5 +1,6 @@
 -- guessing_number2.hs
 
+-- predicate
 checkCount :: Int -> IO Bool
 checkCount count = 
     if count == 0
