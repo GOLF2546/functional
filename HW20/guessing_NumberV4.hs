@@ -1,3 +1,5 @@
+-- guessing_NumberV4.hs
+
 import Text.Read
 import System.Random
 
@@ -51,11 +53,11 @@ runGame num lim count cont range = do
                         then runGame num lim (count+1) cont newRange
                         else putStrLn "Game over"
 
-randomGame :: IO ()
-randomGame = do
+random_withRangeGame :: IO ()
+random_withRangeGame = do
     gen <- newStdGen
-    lim <- readNumber "Guess limit"
     let target = fst $ uniform gen
         initialRange = rangeForGuess minBound maxBound
     putStrLn $ "I've picked a number. Try to guess it! " ++ show target
+    lim <- readNumber "Guess limit"
     runGame target lim 0 (<(lim-1)) initialRange
