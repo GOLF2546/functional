@@ -1,8 +1,8 @@
 -- nRamdomRs.hs
 
-import System.Random (RandomGen, Random, randomR)
+import System.Random (RandomGen, UniformRange, randomR, Random)
 
-nRandomRs :: (RandomGen g, Random a) => (a, a) -> Int -> g -> ([a], g)
+nRandomRs :: (RandomGen g, UniformRange a, Random a, Integral n) => (a, a) -> n -> g -> ([a], g)
 nRandomRs range n gen = go range n gen []
   where
     go _ 0 gen' acc = (reverse acc, gen')
